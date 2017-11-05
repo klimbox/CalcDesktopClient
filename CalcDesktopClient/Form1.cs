@@ -65,8 +65,10 @@ namespace CalcDesktopClient
 
         private void button18_Click(object sender, EventArgs e)
         {
-            string txt = textBox1.Text;
-            textBox1.Text = txt.Substring(0, txt.Length - 1);
+            if(textBox1.Text != "" )
+            {
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+            }
         }
     }
 }
