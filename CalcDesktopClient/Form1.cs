@@ -60,7 +60,7 @@ namespace CalcDesktopClient
         private void button15_Click(object sender, EventArgs e)
         {
             fNum = sNum = op = null;
-            this.textBox1.Text = "";
+            textBox1.Text = "";
         }
 
         private void button18_Click(object sender, EventArgs e)

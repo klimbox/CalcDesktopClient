@@ -31,7 +31,7 @@ namespace AT_Client
         {
             window1.Close();
         }
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("button1")]
         [DataRow("button2")]
         [DataRow("button3")]
@@ -56,7 +56,7 @@ namespace AT_Client
             Assert.AreEqual(true, button.Visible);
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("button1", "7")]
         [DataRow("button2", "9")]
         [DataRow("button3", "8")]
@@ -74,7 +74,7 @@ namespace AT_Client
             button.Click();
             Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
         }
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("button1", "777")]
         [DataRow("button2", "999")]
         [DataRow("button3", "888")]
@@ -95,7 +95,7 @@ namespace AT_Client
             }
             Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
         }
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("button1", "button5", "button4", "11")]
         [DataRow("button2", "button7", "button8", "3")]
         [DataRow("button3", "button10", "button12", "16")]
