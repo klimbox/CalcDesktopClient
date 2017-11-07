@@ -10,7 +10,7 @@ namespace AT_Client
     [TestClass]
     public class UnitTest1
     {
-        private const string appPath = @"D:\Client\CalcDesktopClient\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe";
+        private const string appPath = @"..\..\..\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe";
         private static Window window1;
         [ClassInitialize]
         public static void Class_Init(TestContext context)
