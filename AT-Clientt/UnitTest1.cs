@@ -16,25 +16,6 @@ namespace AT_Client
 
 
         private  Window window1;
-        //[Initialize]
-        //public static void Class_Init(TestContext context)
-        //{
-        //    Application application = Application.Launch(appPath);
-        //    window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
-        //}
-
-        //[TestCleanup]
-        //public static void Data_Clean()
-        //{
-        //    window1.Close();
-        //    Application application = Application.Launch(appPath);
-        //    window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
-        //}
-        //[ClassCleanup]
-        //public static void Class_Clean()
-        //{
-        //    window1.Close();
-        //}
 
         [TestCase("button1")]
         [TestCase("button2")]
