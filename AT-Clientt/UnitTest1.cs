@@ -12,7 +12,7 @@ namespace AT_Client
     public class UnitTest1
     {
         private  Window window1;
-        private Application application = Application.Launch(@"E:\CalcDesktopClient\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe");
+        private Application application = Application.Launch(@"..\..\..\CalcDesktopClient\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe");
         [SetUp]
         public void SetUp()
         {
