@@ -11,12 +11,27 @@ namespace AT_Client
     [TestFixture]
     public class UnitTest1
     {
-
-        private const string appPath = @"D:\Client desktop\CalcDesktopClient\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe";
-
-
         private  Window window1;
-
+        private Application application = Application.Launch(@"E:\CalcDesktopClient\CalcDesktopClient\bin\Debug\CalcDesktopClient.exe");
+        [SetUp]
+        public void SetUp()
+        {
+            window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
+        }
+        [TearDown]
+        public void TearDown()
+        {
+            if(window1.Get<TextBox>("textBox1").Text != "")
+            {
+                window1.Get<TextBox>("textBox1").Text = "";
+            }
+            window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
+        }
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            window1.Close();
+        }
         [TestCase("button1")]
         [TestCase("button2")]
         [TestCase("button3")]
@@ -38,12 +53,8 @@ namespace AT_Client
         [Test]
         public void Button_presense(String id)
         {
-            Application application = Application.Launch(appPath);
-            window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
             Button button = window1.Get<Button>(id);
             Assert.AreEqual(true, button.Visible);
-            window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
-            window1.Close();
         }
 
         [TestCase("button1", "7")]
@@ -60,13 +71,9 @@ namespace AT_Client
         [Test]
         public void Simple_Check(String id, String exp)
         {
-            Application application = Application.Launch(appPath);
-            window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
             Button button = window1.Get<Button>(id);
             button.Click();
             Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
-            window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
-            window1.Close();
         }
         [TestCase("button1", "777")]
         [TestCase("button2", "999")]
@@ -82,16 +89,12 @@ namespace AT_Client
         [Test]
         public void Complex_Check(String id, String exp)
         {
-            Application application = Application.Launch(appPath);
-            window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
             Button button = window1.Get<Button>(id);
             for (int i = 0; i < 3; i++)
             {
                 button.Click();
             }
             Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
-            window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
-            window1.Close();
         }
         [TestCase("button1", "button5", "button4", "11")]
         [TestCase("button2", "button7", "button8", "3")]
@@ -100,8 +103,6 @@ namespace AT_Client
         [Test]
         public void Real_job(String fNum, String sNum, String op, String exp)
         {
-            Application application = Application.Launch(appPath);
-            window1 = application.GetWindow("Calculator", InitializeOption.WithCache);
             Button fButton = window1.Get<Button>(fNum);
             Button sButton = window1.Get<Button>(sNum);
             Button OpButton = window1.Get<Button>(op);
@@ -110,9 +111,7 @@ namespace AT_Client
             OpButton.Click();
             sButton.Click();
             ResButton.Click();
-            // Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
-            window1 = application.GetWindow("Calculator", InitializeOption.NoCache);
-            window1.Close();
+            //Assert.AreEqual(exp, window1.Get<TextBox>("textBox1").Text);
         }
     }
 }
