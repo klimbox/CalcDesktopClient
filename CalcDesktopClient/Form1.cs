@@ -15,7 +15,7 @@ namespace CalcDesktopClient
         string fNum;
         string sNum;
         string op;
-        string url = "http://localhost:80/";
+        string url = "http://localhost:8370/";
         private void Form1_Load(object sender, EventArgs e)
         {
             httpC = new HttpClient();
