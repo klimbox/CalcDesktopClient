@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Windows.Forms;
+using CalcDesktopClient.ServerCalculator;
 
 
 namespace CalcDesktopClient
@@ -10,15 +11,16 @@ namespace CalcDesktopClient
         public Form1()
         {
             InitializeComponent();
+            _sCalc = new ServerCalc();
         }
-        HttpClient httpC;
+        private ServerCalc _sCalc;
         string fNum;
         string sNum;
         string op;
-        string url = "http://localhost:8370/";
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            httpC = new HttpClient();
+            
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -41,19 +43,17 @@ namespace CalcDesktopClient
             }
         }
 
-        private async void button17_Click(object sender, EventArgs e)
+        private void button17_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text == "") return;
+            sNum = textBox1.Text;
+            try
             {
-                sNum = textBox1.Text;
-                try
-                {
-                    textBox1.Text = await httpC.GetStringAsync($"{url}?num1={fNum}&num2={sNum}&opr={op}");
-                }
-                catch(HttpRequestException)
-                {
-                    textBox1.Text = "server not respond";
-                }
+                textBox1.Text = _sCalc.Calculate(fNum, sNum, op);
+            }
+            catch(HttpRequestException)
+            {
+                textBox1.Text = "server not respond";
             }
         }
 
