@@ -14,7 +14,13 @@ namespace CalcDesktopClient.ServerCalculator
             _httpClient = new HttpClient();
         }
 
-
+        /// <summary>
+        /// Calculate
+        /// </summary>
+        /// <param name="num1"></param>
+        /// <param name="num2"></param>
+        /// <param name="opr"></param>
+        /// <returns></returns>
         public string Calculate(string num1, string num2, string opr)
         {
             return _httpClient.GetStringAsync($"{this.Url}?num1={num1}&num2={num2}&opr={opr}").GetAwaiter().GetResult();
