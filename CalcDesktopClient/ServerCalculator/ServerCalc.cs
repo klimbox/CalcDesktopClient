@@ -15,11 +15,11 @@ namespace CalcDesktopClient.ServerCalculator
         }
 
         /// <summary>
-        /// Calculate
+        /// Calculate 
         /// </summary>
-        /// <param name="num1"></param>
-        /// <param name="num2"></param>
-        /// <param name="opr"></param>
+        /// <param name="num1">aqsda</param>
+        /// <param name="num2">asdad</param>
+        /// <param name="opr">asda</param>
         /// <returns></returns>
         public string Calculate(string num1, string num2, string opr)
         {
